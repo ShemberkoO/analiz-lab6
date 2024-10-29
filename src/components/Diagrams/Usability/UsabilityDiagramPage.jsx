@@ -38,11 +38,11 @@ const UsabilityDiagramPage = () => {
     <div>
        <h1>Діаграма експертів зручності використання</h1>
        <div className='row d-flex justify-content-center'>
-        <div className='d-flex justify-content-between col-md-8'>
-          <h3>Sf = {s}</h3>
-          <h3>Sc = {c_s}</h3>
-          <h3>H = {weight/10}</h3>
-          <h3>Z = {s/c_s}</h3>
+       <div className='d-flex justify-content-between col-md-8'>
+          <h3>Sf = {s.toFixed(2)}</h3>
+          <h3>Sc = {c_s.toFixed(2)}</h3>
+          <h3>H = {(weight/10).toFixed(2)}</h3>
+          <h3>Z = {(s/c_s).toFixed(2)}</h3>
         </div>
        </div>
      

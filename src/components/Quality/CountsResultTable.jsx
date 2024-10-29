@@ -79,20 +79,20 @@ export default function CountsResultTable() {
             <tr>
                 <td>Коефіцієнти вагомості</td>
                 {experts.map((val,index)=>(
-                    <td>{val.weight/10}</td>
+                    <td>{(val.weight/10).toFixed(2)}</td>
                 ))}
             </tr>
             <tr>
                 <td>Узагальнені оцінки</td>
                 {ColSum.map((val,ind)=>(<td>{(val/startKefSums[ind]).toFixed(2)}</td>))}
-                <td>{avg/kefAvgAvg}</td>
+                <td>{(avg/kefAvgAvg).toFixed(2)}</td>
                 <td>
-                {startKef.reduce((acc, val,criterionIndex) => {
+                {(startKef.reduce((acc, val,criterionIndex) => {
                     return acc + val.reduce((sum, value, expertIndex) => {
                         const product = value * expertMarks[criterionIndex][expertIndex] /(kefAvg[criterionIndex])/experts.reduce((acc, val) => acc + val.weight / 10, 0);
                         return sum + product;
                         }, 0)
-                    },0)/startKef.length
+                    },0)/startKef.length).toFixed(2)
                     }
                 </td>
             </tr>
@@ -108,9 +108,9 @@ export default function CountsResultTable() {
                     }).reduce((acc, val) => acc + val, 0) / ColSum.length).toFixed(2)}
                 </td>
                 <td>
-                    {ColSum.map((val, index) => {
+                    {(ColSum.map((val, index) => {
                     return (val / startKefSums[index]) * experts[index].weight / 10;
-                    }).reduce((acc, val) => acc + val, 0)/experts.reduce((acc, val) => acc + val.weight / 10, 0)}
+                    }).reduce((acc, val) => acc + val, 0)/experts.reduce((acc, val) => acc + val.weight / 10, 0)).toFixed(2)}
                 </td>
             </tr>
 
@@ -119,14 +119,14 @@ export default function CountsResultTable() {
               <td>{criteria[criterionIndex]}</td>
               {criterion.map((value, expertIndex) => (
                 <td key={expertIndex}>
-                  <a>{value*expertMarks[criterionIndex][expertIndex]}</a>
+                  <a>{(value*expertMarks[criterionIndex][expertIndex]).toFixed(2)}</a>
                 </td>
               ))}
-              <td>{kefAvg[criterionIndex] * marksAvg[criterionIndex]}</td>
-              <td>{criterion.reduce((sum, value, expertIndex) => {
+              <td>{(kefAvg[criterionIndex] * marksAvg[criterionIndex]).toFixed(2)}</td>
+              <td>{(criterion.reduce((sum, value, expertIndex) => {
                 const product = value * expertMarks[criterionIndex][expertIndex] /(kefAvg[criterionIndex])/experts.reduce((acc, val) => acc + val.weight / 10, 0);
                 return sum + product;
-                }, 0)}
+                }, 0)).toFixed(2)}
               </td>
             </tr>
           ))}
